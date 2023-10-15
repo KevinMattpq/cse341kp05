@@ -21,7 +21,7 @@ PUT http://localhost:3000/cars/652afa8f04835fae710cbd9d   HTTP/1.1
 Content-type: application/json
 
 {
-     "carBrand": "Ferrari",
+    "carBrand": "Ferrari",
     "carModel": "SF-90",
     "carColor": "Red",
     "carTopSpeed": "211mph",
@@ -29,4 +29,14 @@ Content-type: application/json
 }
 
 # Render test
+###
+POST https://cse341-kp05.onrender.com/cars HTTP/1.1
+Content-type: application/json
 
+{
+    "carBrand": "Aston",
+    "carModel": "Martin",
+    "carColor": "Green",
+    "carTopSpeed": "210mph",
+    "carYear": "2023"
+}
