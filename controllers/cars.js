@@ -40,7 +40,7 @@ const getSingleCar = async (req, res, next) => {
       carTopSpeed: req.body.carTopSpeed,
       carYear: req.body.carYear
      }
-      const result = await mongodb.getDb().db().collection('contacts').insertOne(newCar)
+      const result = await mongodb.getDb().db().collection('cars').insertOne(newCar)
       if (result){
         res.setHeader('Content-type', 'application/json');
         res.status(201).json(result);

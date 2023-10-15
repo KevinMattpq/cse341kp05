@@ -1,6 +1,7 @@
 # Personal Assigment 05
 
 # Local test
+
 # Checking createContact locally
 ###
 POST http://localhost:3000/cars HTTP/1.1
@@ -13,3 +14,19 @@ Content-type: application/json
     "carTopSpeed": "280mph",
     "carYear": "2023"
 }
+
+# testing update locally
+###
+PUT http://localhost:3000/cars/652afa8f04835fae710cbd9d   HTTP/1.1
+Content-type: application/json
+
+{
+     "carBrand": "Ferrari",
+    "carModel": "SF-90",
+    "carColor": "Red",
+    "carTopSpeed": "211mph",
+    "carYear": "2023"
+}
+
+# Render test
+
