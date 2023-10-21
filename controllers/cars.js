@@ -67,16 +67,30 @@ const getSingleCar = async (req, res, next) => {
     }
     }
   
-  const deleteCar = async (req, res, next) =>{
-    const carId = new ObjectId(req.params.id)
-    const result = await mongodb.getDb().db().collection('cars').deleteOne({_id: carId});
-    if (result){
-      res.setHeader('Content-type', 'application/json');
-      res.status(200).json(result);
-    }else{
-      console.log("Error")
+    const deleteCar = async (req, res) =>{
+      if(!ObjectId.validationResult(req.params.id)){
+        res.status(400).json('Must use a valid Car id to delete a car.');
+      }
+  
+      const carId = new ObjectId(req.params.id)
+      const result = await mongodb.getDb().db().collection('cars').deleteOne({_id: carId});
+      if (result){
+        res.setHeader('Content-type', 'application/json');
+        res.status(200).json(result);
+      }else{
+        res.status(500).json(response.error || 'Some error ocurred while deleting the contact');
+      }
     }
-  }
+  // const deleteCar = async (req, res, next) =>{
+  //   const carId = new ObjectId(req.params.id)
+  //   const result = await mongodb.getDb().db().collection('cars').deleteOne({_id: carId});
+  //   if (result){
+  //     res.setHeader('Content-type', 'application/json');
+  //     res.status(200).json(result);
+  //   }else{
+  //     console.log("Error")
+  //   }
+  // }
 
 module.exports = { getAllCars, getSingleCar, createCar, updateCar, deleteCar };
 
