@@ -51,7 +51,7 @@ const getSingleCar = async (req, res, next) => {
 
   const updateCar = async (req, res, next) => {
     if(!ObjectId.isValid(req.params.id)){
-      res.status(400).json('Must use a valid contact Id to update contact');
+      res.status(400).json('Must use a valid car Id to update contact');
     }
     const updatedCar = {
       carBrand: req.body.carBrand,
