@@ -50,6 +50,9 @@ const getSingleCar = async (req, res, next) => {
   }
 
   const updateCar = async (req, res, next) => {
+    if(!ObjectId.isValid(req.params.id)){
+      res.status(400).json('Must use a valid contact Id to update contact');
+    }
     const updatedCar = {
       carBrand: req.body.carBrand,
       carModel: req.body.carModel,
@@ -63,12 +66,12 @@ const getSingleCar = async (req, res, next) => {
       res.setHeader('Content-type', 'application/json');
       res.status(204).json(result);
     }else{
-      console.log("Error")
+      res.status(500).json(response.error || 'Some error ocurred while updating the car information');
     }
     }
   
     const deleteCar = async (req, res) =>{
-      if(!ObjectId.validationResult(req.params.id)){
+      if(!ObjectId.isValid(req.params.id)){
         res.status(400).json('Must use a valid Car id to delete a car.');
       }
   
