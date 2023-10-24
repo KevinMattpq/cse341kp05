@@ -6,7 +6,7 @@ const doc = {
     description: 'Cars Inventory API Personal Assignment 05',
   },
 //   to test locally write localhost:3000
-  host: 'localhost:3000', 
+  host: 'cse341-kp05.onrender.com', 
   schemes: ['http','https'],
 };
 
