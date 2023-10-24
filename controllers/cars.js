@@ -1,6 +1,6 @@
 const mongodb = require('../db/connect');
 const{ObjectId}  = require('mongodb');
-const { param } = require('../routes');
+
 
 
 const getAllCars = async(req, res, next) => {
@@ -31,7 +31,7 @@ const getSingleCar = async (req, res, next) => {
     }
   };
 
-  // New Functions Personal Assignment 03
+  // New Functions Personal 
   const createCar = async (req, res, next) =>{
      const newCar = {
       carBrand: req.body.carBrand,
@@ -51,7 +51,7 @@ const getSingleCar = async (req, res, next) => {
 
   const updateCar = async (req, res, next) => {
     if(!ObjectId.isValid(req.params.id)){
-      res.status(400).json('Must use a valid contact Id to update contact');
+      res.status(400).json('Must use a valid car Id to update contact');
     }
     const updatedCar = {
       carBrand: req.body.carBrand,
