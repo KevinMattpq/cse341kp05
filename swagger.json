@@ -79,14 +79,14 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
       "put": {
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
@@ -128,9 +128,6 @@
           },
           "412": {
             "description": "Precondition Failed"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -156,9 +153,6 @@
           },
           "412": {
             "description": "Precondition Failed"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
