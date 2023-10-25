@@ -87,6 +87,9 @@
       },
       "put": {
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",

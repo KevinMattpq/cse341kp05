@@ -27,7 +27,7 @@ const getSingleCar = async (req, res, next) => {
       }
     } catch (error) {
       console.error(error);
-      res.status(200).json({ error: 'server error' });
+      res.status(400).json({ error: 'server error' });
     }
   };
 
