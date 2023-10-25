@@ -23,7 +23,7 @@ const getSingleCar = async (req, res, next) => {
         res.setHeader('Content-type', 'application/json');
         res.status(200).json(result);
       } else {
-        res.status(200).json({ error: 'No Car found' });
+        res.status(400).json({ error: 'No Car found' });
       }
     } catch (error) {
       console.error(error);
@@ -66,7 +66,7 @@ const getSingleCar = async (req, res, next) => {
       res.setHeader('Content-type', 'application/json');
       res.status(204).json(result);
     }else{
-      res.status(500).json(response.error || 'Some error ocurred while updating the car information');
+      res.status(400).json(response.error || 'Some error ocurred while updating the car information');
     }
     }
   
@@ -81,7 +81,7 @@ const getSingleCar = async (req, res, next) => {
         res.setHeader('Content-type', 'application/json');
         res.status(200).json(result);
       }else{
-        res.status(500).json(response.error || 'Some error ocurred while deleting the contact');
+        res.status(400).json(response.error || 'Some error ocurred while deleting the contact');
       }
     }
   // const deleteCar = async (req, res, next) =>{
