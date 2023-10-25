@@ -59,12 +59,12 @@ const getSingleCar = async (req, res, next) => {
       carColor: req.body.carColor,
       carTopSpeed: req.body.carTopSpeed,
       carYear: req.body.carYear
-    }
-    const userId = new ObjectId(req.params.id)
-    const result = await mongodb.getDb().db().collection('cars').replaceOne({_id: userId},updatedCar);
-    if (result){
-      res.setHeader('Content-type', 'application/json');
-      res.status(204).json(result);
+    };
+    const carId = new ObjectId(req.params.id)
+    const result = await mongodb.getDb().db().collection('cars').replaceOne({_id: carId},updatedCar);
+    if (result.modifiedCount > 0){
+      // res.setHeader('Content-type', 'application/json');
+      res.status(204).send(result);
     }else{
       res.status(400).json(response.error || 'Some error ocurred while updating the car information');
     }
@@ -79,7 +79,7 @@ const getSingleCar = async (req, res, next) => {
       const result = await mongodb.getDb().db().collection('cars').deleteOne({_id: carId});
       if (result){
         res.setHeader('Content-type', 'application/json');
-        res.status(200).json(result);
+        res.status(200).send(result);
       }else{
         res.status(400).json(response.error || 'Some error ocurred while deleting the contact');
       }
