@@ -10,10 +10,6 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
 
-// app.listen(3000, () => {
-//     console.log(`Server is running on port ${port}`);
-
-// })
 app
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   // .use(cors())
