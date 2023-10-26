@@ -1,15 +1,29 @@
 const mongodb = require('../db/connect');
-const{ObjectId}  = require('mongodb');
+// const{ObjectId}  = require('mongodb');
+const ObjectId = require('mongodb').ObjectId;
 
 
 
-const getAllCars = async(req, res, next) => {
-    const result = await mongodb.getDb().db().collection('cars').find();
-    result.toArray().then((lists) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(lists);
-    });
-};
+const getAllCars = (req, res) => {
+    mongodb
+    .getDb()
+    .db()
+    .collection('cars')
+    .find()
+    .toArray((error, lists) => {
+      if(error){
+        res.status(400).json({message: error});
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists);
+    });    
+  };
+
+    // }).then((lists) => {
+    //     res.setHeader('Content-Type', 'application/json');
+    //     res.status(200).json(lists);
+    // });
+
 
 const getSingleCar = async (req, res, next) => {
     try {
@@ -53,6 +67,7 @@ const getSingleCar = async (req, res, next) => {
     if(!ObjectId.isValid(req.params.id)){
       res.status(400).json('Must use a valid car Id to update contact');
     }
+    const carId = new ObjectId(req.params.id)
     const updatedCar = {
       carBrand: req.body.carBrand,
       carModel: req.body.carModel,
@@ -60,15 +75,14 @@ const getSingleCar = async (req, res, next) => {
       carTopSpeed: req.body.carTopSpeed,
       carYear: req.body.carYear
     };
-    const carId = new ObjectId(req.params.id)
     const result = await mongodb.getDb().db().collection('cars').replaceOne({_id: carId},updatedCar);
     if (result.modifiedCount > 0){
-      res.setHeader('Content-type', 'application/json');
+      // res.setHeader('Content-type', 'application/json');
       res.status(204).send(result);
     }else{
       res.status(400).json(response.error || 'Some error ocurred while updating the car information');
     }
-    }
+    };
   
     const deleteCar = async (req, res) =>{
       if(!ObjectId.isValid(req.params.id)){
