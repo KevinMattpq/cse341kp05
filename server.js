@@ -15,19 +15,24 @@ const swaggerDocument = require('./swagger.json');
 
 // })
 app
-  .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-  // .use(cors())
-  .use(express.json())
-  .use(express.urlencoded({ extended: true }))
-  .use('/', require('./routes'));
-
-app
   .use(bodyParser.json())
   .use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
   })
   .use('/', require('./routes'));
+
+  process.on('uncaughtException', (err,origin) => {
+    console.log(process.stderr.fd,`Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+  });
+  
+app
+  .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+  // .use(cors())
+  .use(express.json())
+  .use(express.urlencoded({ extended: true }))
+  .use('/', require('./routes'));
+
 
 mongodb.initDb((err, mongodb) => {
   if (err) {
