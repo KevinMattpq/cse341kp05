@@ -7,7 +7,7 @@ const doc = {
   },
 //   to test locally write localhost:3000
   host: 'cse341-kp05.onrender.com', 
-  schemes: ['http','https'],
+  schemes: ['https']
 };
 
 const outputFile = './swagger.json';
