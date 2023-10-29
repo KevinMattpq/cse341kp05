@@ -11,7 +11,8 @@ const saveCar = (req, res, next) => {
       carModel: 'required|string',
       carColor: 'required|string',
       carTopSpeed: 'required|string',
-      carYear: 'string'
+      carYear: 'string',
+      carPrice: 'string'
     };
     validator(req.body, validationRule, {}, (err, status) => {
       if (!status) {
@@ -25,8 +26,30 @@ const saveCar = (req, res, next) => {
       }
     });
   };
+
+  const saveBuyer = (req, res, next) => {
+    const validationBuyer = {
+      buyerName: 'required|string',
+      buyerLastname: 'required|string',
+      buyerAge: 'required|string',
+      buyerAnnualIncome: 'required|string',
+      buyerCreditScore: 'required|string'
+    };
+    validator(req.body, validationBuyer, {}, (err, status) => {
+      if (!status) {
+        res.status(412).send({
+          success: false,
+          message: 'Validation failed',
+          data: err
+        });
+      } else {
+        next();
+      }
+    });
+  };
+
   
 
   module.exports = {
-    saveCar
+    saveCar,saveBuyer
   };

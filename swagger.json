@@ -5,10 +5,10 @@
     "description": "Cars Inventory API Personal Assignment 05",
     "version": "1.0.0"
   },
-  "host": "cse341-kp05.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/cars/": {
@@ -51,6 +51,9 @@
                   "example": "any"
                 },
                 "carYear": {
+                  "example": "any"
+                },
+                "carPrice": {
                   "example": "any"
                 }
               }
@@ -115,6 +118,157 @@
                   "example": "any"
                 },
                 "carYear": {
+                  "example": "any"
+                },
+                "carPrice": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          }
+        }
+      }
+    },
+    "/buyers/": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "buyerName": {
+                  "example": "any"
+                },
+                "buyerLastname": {
+                  "example": "any"
+                },
+                "buyerAge": {
+                  "example": "any"
+                },
+                "buyerAnnualIncome": {
+                  "example": "any"
+                },
+                "buyerCreditScore": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/buyers/{id}": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "buyerName": {
+                  "example": "any"
+                },
+                "buyerLastname": {
+                  "example": "any"
+                },
+                "buyerAge": {
+                  "example": "any"
+                },
+                "buyerAnnualIncome": {
+                  "example": "any"
+                },
+                "buyerCreditScore": {
                   "example": "any"
                 }
               }
