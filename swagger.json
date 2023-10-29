@@ -2,13 +2,13 @@
   "swagger": "2.0",
   "info": {
     "title": "Cars Inventory API",
-    "description": "Cars Inventory API Personal Assignment 05",
+    "description": "Cars Inventory API Personal Assignment 07",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse-341kp07.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/cars/": {
