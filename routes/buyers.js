@@ -10,7 +10,7 @@ router.get('/', buyersFromControllers.getAllBuyers);
 router.get('/:id',buyersFromControllers.getSingleBuyer);
 
 // Personal Assignment 07
-router.post('/', buyersFromControllers.createBuyer);
+router.post('/',validation.saveBuyer, buyersFromControllers.createBuyer);
 // Adding Validations
 router.put('/:id',validation.saveBuyer, buyersFromControllers.updateBuyer);
 router.delete('/:id',validation.saveBuyer, buyersFromControllers.deleteBuyer);
