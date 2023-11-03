@@ -19,11 +19,6 @@ const getAllCars = (req, res) => {
     });    
   };
 
-    // }).then((lists) => {
-    //     res.setHeader('Content-Type', 'application/json');
-    //     res.status(200).json(lists);
-    // });
-
 
 const getSingleCar = async (req, res, next) => {
     try {
@@ -52,7 +47,8 @@ const getSingleCar = async (req, res, next) => {
       carModel: req.body.carModel,
       carColor: req.body.carColor,
       carTopSpeed: req.body.carTopSpeed,
-      carYear: req.body.carYear
+      carYear: req.body.carYear,
+      carPrice: req.body.carPrice
      }
       const result = await mongodb.getDb().db().collection('cars').insertOne(newCar)
       if (result){
@@ -73,7 +69,8 @@ const getSingleCar = async (req, res, next) => {
       carModel: req.body.carModel,
       carColor: req.body.carColor,
       carTopSpeed: req.body.carTopSpeed,
-      carYear: req.body.carYear
+      carYear: req.body.carYear,
+      carPrice: req.body.carPrice
     };
     const result = await mongodb.getDb().db().collection('cars').replaceOne({_id: carId},updatedCar);
     if (result.modifiedCount > 0){
