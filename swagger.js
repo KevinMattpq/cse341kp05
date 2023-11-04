@@ -3,7 +3,7 @@ const swaggerAutogen = require('swagger-autogen')();
 const doc = {
   info: {
     title: 'Cars Inventory API',
-    description: 'Cars Inventory API Personal Assignment 07',
+    description: 'Cars Inventory API Personal Assignment 08',
   },
 //   to test locally write localhost:3000
   host: 'cse-341kp07.onrender.com', 

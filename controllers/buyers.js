@@ -3,20 +3,13 @@ const ObjectId = require('mongodb').ObjectId;
 
 
 
-const getAllBuyers = (req, res) => {
-    mongodb
-    .getDb()
-    .db()
-    .collection('buyers')
-    .find()
-    .toArray((error, lists) => {
-      if(error){
-        res.status(400).json({message: error});
-      }
+const getAllBuyers = async(req, res, next) => {
+  const result = await mongodb.getDb().db().collection('buyers').find();
+  result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(lists);
-    });    
-  };
+  });
+};
 
 const getSingleBuyer = async (req, res, next) => {
     try {

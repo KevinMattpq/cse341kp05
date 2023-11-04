@@ -40,3 +40,8 @@ Content-type: application/json
     "carTopSpeed": "210mph",
     "carYear": "2023"
 }
+
+# Testing Auth
+###
+GET http://localhost:3000/cars HTTP/1.1
+
