@@ -31,7 +31,6 @@ const getSingleBuyer = async (req, res, next) => {
     }
   };
 
-  // New Functions Personal 07
   const createBuyer = async (req, res, next) =>{
      const newBuyer = {
       buyerName: req.body.buyerName,
