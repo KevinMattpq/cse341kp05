@@ -11,7 +11,7 @@ require('dotenv').config()
 const config = {
     authRequired: false,
     auth0Logout: true,
-    baseURL: 'cse-341kp07.onrender.com',
+    baseURL: 'https://cse-341kp07.onrender.com',
     clientID: process.env.CLIENT_ID,
     issuerBaseURL: process.env.ISSUER_BASE_URL,
     secret: process.env.SECRET_KEY
